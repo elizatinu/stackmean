@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div class="main">
+
+        <div class="row">
+
+            <div class="col-4"></div>
+            <div class="col-4"><h1>Login SBN Bank</h1></div>
+            <div class="col-4"></div>
+        </div>
+        <input type="text" [(ngModel)]="test">
+        <form [formGroup]="loginForm" (ngLogin)="login()">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username *</label>
+                <input formControlName="username" name="username" type="text" class="form-control" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <label *ngIf="loginForm.get('username')?.errors" style="color: red;" >Username is required</label>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password *</label>
+                <input formControlName="password" name="password" type="password" class="form-control" >
+                <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors">
+                  <label *ngIf="loginForm.get('password')?.errors?.required" style="color: red;" for="" id="pinvalid" >Password is required</label>
+                  <label *ngIf="loginForm.get('password')?.errors?.minlength" style="color: red;" for="" id="pinvalid">Password must be atleast 8 characters</label>
+            </div>
+            </div>
+            <button type="login" (click)="login()" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>
